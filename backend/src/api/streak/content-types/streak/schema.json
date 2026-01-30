@@ -1,0 +1,30 @@
+{
+  "kind": "collectionType",
+  "collectionName": "streaks",
+  "info": {
+    "singularName": "streak",
+    "pluralName": "streaks",
+    "displayName": "Streak"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "user": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "plugin::users-permissions.user",
+      "inversedBy": "streak"
+    },
+    "current_streak": {
+      "type": "integer"
+    },
+    "longest_streak": {
+      "type": "integer"
+    },
+    "last_check_in": {
+      "type": "date"
+    }
+  }
+}

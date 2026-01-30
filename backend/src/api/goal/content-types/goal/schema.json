@@ -1,0 +1,52 @@
+{
+  "kind": "collectionType",
+  "collectionName": "goals",
+  "info": {
+    "singularName": "goal",
+    "pluralName": "goals",
+    "displayName": "Goal"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "tittle": {
+      "type": "string"
+    },
+    "description": {
+      "type": "blocks"
+    },
+    "target_date": {
+      "type": "date"
+    },
+    "progress": {
+      "type": "integer"
+    },
+    "goal_status": {
+      "type": "enumeration",
+      "enum": [
+        "active",
+        "completed",
+        "abandoned"
+      ]
+    },
+    "category": {
+      "type": "string"
+    },
+    "priority": {
+      "type": "enumeration",
+      "enum": [
+        "low",
+        "medium",
+        "high"
+      ]
+    },
+    "user": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "plugin::users-permissions.user",
+      "inversedBy": "goals"
+    }
+  }
+}

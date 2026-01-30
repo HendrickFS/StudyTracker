@@ -496,6 +496,46 @@ export interface ApiAboutAbout extends Struct.SingleTypeSchema {
   };
 }
 
+export interface ApiAchievementAchievement extends Struct.CollectionTypeSchema {
+  collectionName: 'achievements';
+  info: {
+    displayName: 'Achievement';
+    pluralName: 'achievements';
+    singularName: 'achievement';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    badge_icon: Schema.Attribute.Media<
+      'images' | 'files' | 'videos' | 'audios'
+    >;
+    category: Schema.Attribute.Enumeration<
+      ['goal_completion', 'streak', 'milestone', 'special']
+    >;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    description: Schema.Attribute.Blocks;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::achievement.achievement'
+    > &
+      Schema.Attribute.Private;
+    name: Schema.Attribute.String;
+    points: Schema.Attribute.Integer;
+    publishedAt: Schema.Attribute.DateTime;
+    rarity: Schema.Attribute.Enumeration<
+      ['common', 'rare', 'epic', 'legendary']
+    >;
+    unlock_criteria: Schema.Attribute.JSON;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiArticleArticle extends Struct.CollectionTypeSchema {
   collectionName: 'articles';
   info: {
@@ -629,6 +669,115 @@ export interface ApiGlobalGlobal extends Struct.SingleTypeSchema {
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+  };
+}
+
+export interface ApiGoalGoal extends Struct.CollectionTypeSchema {
+  collectionName: 'goals';
+  info: {
+    displayName: 'Goal';
+    pluralName: 'goals';
+    singularName: 'goal';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    category: Schema.Attribute.String;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    description: Schema.Attribute.Blocks;
+    goal_status: Schema.Attribute.Enumeration<
+      ['active', 'completed', 'abandoned']
+    >;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<'oneToMany', 'api::goal.goal'> &
+      Schema.Attribute.Private;
+    priority: Schema.Attribute.Enumeration<['low', 'medium', 'high']>;
+    progress: Schema.Attribute.Integer;
+    publishedAt: Schema.Attribute.DateTime;
+    target_date: Schema.Attribute.Date;
+    tittle: Schema.Attribute.String;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    user: Schema.Attribute.Relation<
+      'manyToOne',
+      'plugin::users-permissions.user'
+    >;
+  };
+}
+
+export interface ApiStreakStreak extends Struct.CollectionTypeSchema {
+  collectionName: 'streaks';
+  info: {
+    displayName: 'Streak';
+    pluralName: 'streaks';
+    singularName: 'streak';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    current_streak: Schema.Attribute.Integer;
+    last_check_in: Schema.Attribute.Date;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::streak.streak'
+    > &
+      Schema.Attribute.Private;
+    longest_streak: Schema.Attribute.Integer;
+    publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    user: Schema.Attribute.Relation<
+      'oneToOne',
+      'plugin::users-permissions.user'
+    >;
+  };
+}
+
+export interface ApiUserAchievementUserAchievement
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'user_achievements';
+  info: {
+    displayName: 'User_Achievement';
+    pluralName: 'user-achievements';
+    singularName: 'user-achievement';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    achievement: Schema.Attribute.Relation<
+      'oneToOne',
+      'api::achievement.achievement'
+    >;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::user-achievement.user-achievement'
+    > &
+      Schema.Attribute.Private;
+    progress: Schema.Attribute.Integer;
+    publishedAt: Schema.Attribute.DateTime;
+    unlocked_at: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    user: Schema.Attribute.Relation<
+      'oneToOne',
+      'plugin::users-permissions.user'
+    >;
   };
 }
 
@@ -1087,7 +1236,6 @@ export interface PluginUsersPermissionsUser
   };
   options: {
     draftAndPublish: false;
-    timestamps: true;
   };
   attributes: {
     blocked: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>;
@@ -1101,6 +1249,8 @@ export interface PluginUsersPermissionsUser
       Schema.Attribute.SetMinMaxLength<{
         minLength: 6;
       }>;
+    goals: Schema.Attribute.Relation<'oneToMany', 'api::goal.goal'>;
+    last_activity_date: Schema.Attribute.Date;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
@@ -1112,6 +1262,9 @@ export interface PluginUsersPermissionsUser
       Schema.Attribute.SetMinMaxLength<{
         minLength: 6;
       }>;
+    profile_picture: Schema.Attribute.Media<
+      'images' | 'files' | 'videos' | 'audios'
+    >;
     provider: Schema.Attribute.String;
     publishedAt: Schema.Attribute.DateTime;
     resetPasswordToken: Schema.Attribute.String & Schema.Attribute.Private;
@@ -1119,6 +1272,9 @@ export interface PluginUsersPermissionsUser
       'manyToOne',
       'plugin::users-permissions.role'
     >;
+    streak: Schema.Attribute.Relation<'oneToOne', 'api::streak.streak'>;
+    streak_count: Schema.Attribute.Integer;
+    total_achievements: Schema.Attribute.Integer;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -1144,10 +1300,14 @@ declare module '@strapi/strapi' {
       'admin::transfer-token-permission': AdminTransferTokenPermission;
       'admin::user': AdminUser;
       'api::about.about': ApiAboutAbout;
+      'api::achievement.achievement': ApiAchievementAchievement;
       'api::article.article': ApiArticleArticle;
       'api::author.author': ApiAuthorAuthor;
       'api::category.category': ApiCategoryCategory;
       'api::global.global': ApiGlobalGlobal;
+      'api::goal.goal': ApiGoalGoal;
+      'api::streak.streak': ApiStreakStreak;
+      'api::user-achievement.user-achievement': ApiUserAchievementUserAchievement;
       'plugin::content-releases.release': PluginContentReleasesRelease;
       'plugin::content-releases.release-action': PluginContentReleasesReleaseAction;
       'plugin::i18n.locale': PluginI18NLocale;
