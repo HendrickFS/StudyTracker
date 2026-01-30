@@ -96,9 +96,8 @@
 - [ ] Add achievement validation
 
 #### Streaks API
-- [ ] `GET /api/streaks/user` - Get user's streak data
-- [ ] `POST /api/streaks/check-in` - Daily check-in
-- [ ] `GET /api/streaks/leaderboard` - Top streaks (future feature)
+- [X] `GET /api/streaks/user` - Get user's streak data
+- [X] `POST /api/streaks/check-in` - Daily check-in
 - [ ] Implement streak calculation logic
 - [ ] Add cron job for streak reset detection
 
