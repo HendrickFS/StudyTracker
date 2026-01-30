@@ -73,7 +73,7 @@
 
 #### Authentication
 - [X] Set up JWT authentication
-- [ ] Create custom registration endpoint
+- [X] Create custom registration endpoint
 - [ ] Add user profile endpoints
 - [ ] Implement password reset
 
@@ -83,15 +83,15 @@
 - [X] `POST /api/goals` - Create new goal
 - [X] `PUT /api/goals/:id` - Update goal
 - [X] `DELETE /api/goals/:id` - Delete goal
-- [ ] `PATCH /api/goals/:id/progress` - Update progress only
-- [ ] Add filtering (by status, category, date)
-- [ ] Add sorting options
+- [X] `PATCH /api/goals/:id/progress` - Update progress only
+- [X] Add filtering (by status, category, date)
+- [X] Add sorting options
 
 #### Achievements API
 - [X] `GET /api/achievements` - Get all achievements
-- [ ] `GET /api/achievements/user/:userId` - Get user's unlocked achievements
-- [ ] `POST /api/achievements/unlock` - Unlock achievement for user
-- [ ] `GET /api/achievements/available` - Get locked achievements
+- [X] `GET /api/achievements/user/:userId` - Get user's unlocked achievements
+- [X] `POST /api/achievements/unlock` - Unlock achievement for user
+- [X] `GET /api/achievements/available` - Get locked achievements
 - [ ] Create achievement unlock logic service
 - [ ] Add achievement validation
 
