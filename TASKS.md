@@ -72,23 +72,23 @@
 ### Phase 3: API Controllers & Services
 
 #### Authentication
-- [ ] Set up JWT authentication
+- [X] Set up JWT authentication
 - [ ] Create custom registration endpoint
 - [ ] Add user profile endpoints
 - [ ] Implement password reset
 
 #### Goals API
-- [ ] `GET /api/goals` - Get all user goals
-- [ ] `GET /api/goals/:id` - Get single goal
-- [ ] `POST /api/goals` - Create new goal
-- [ ] `PUT /api/goals/:id` - Update goal
-- [ ] `DELETE /api/goals/:id` - Delete goal
+- [X] `GET /api/goals` - Get all user goals
+- [X] `GET /api/goals/:id` - Get single goal
+- [X] `POST /api/goals` - Create new goal
+- [X] `PUT /api/goals/:id` - Update goal
+- [X] `DELETE /api/goals/:id` - Delete goal
 - [ ] `PATCH /api/goals/:id/progress` - Update progress only
 - [ ] Add filtering (by status, category, date)
 - [ ] Add sorting options
 
 #### Achievements API
-- [ ] `GET /api/achievements` - Get all achievements
+- [X] `GET /api/achievements` - Get all achievements
 - [ ] `GET /api/achievements/user/:userId` - Get user's unlocked achievements
 - [ ] `POST /api/achievements/unlock` - Unlock achievement for user
 - [ ] `GET /api/achievements/available` - Get locked achievements
@@ -356,31 +356,3 @@
 - [ ] Developer setup guide
 - [ ] Deployment guide
 - [ ] Contributing guidelines
-
----
-
-## ✅ Quick Start Checklist
-
-**Week 1: Foundation**
-- [ ] Set up Strapi backend with database
-- [ ] Create User, Goal, Achievement content types
-- [ ] Set up Next.js frontend with Tailwind
-- [ ] Implement authentication
-
-**Week 2: Core Features**
-- [ ] Build Goals CRUD API and UI
-- [ ] Create achievement system
-- [ ] Implement streak tracking
-- [ ] Build main dashboard
-
-**Week 3: Polish**
-- [ ] Design and implement UI/UX
-- [ ] Add animations
-- [ ] Responsive design
-- [ ] Testing
-
-**Week 4: Deploy**
-- [ ] Deploy backend and frontend
-- [ ] Final testing
-- [ ] Documentation
-- [ ] Launch! 🚀
