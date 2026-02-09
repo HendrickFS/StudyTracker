@@ -56,8 +56,6 @@ StudyTracker helps you stay motivated while learning by turning your educational
    ```bash
    cd backend
    npm install
-   cp .env.example .env
-   # Configure your database in .env
    npm run develop
    ```
    Strapi will be available at `http://localhost:1337`
@@ -66,29 +64,10 @@ StudyTracker helps you stay motivated while learning by turning your educational
    ```bash
    cd frontend
    npm install
-   cp .env.local.example .env.local
-   # Add your Strapi API URL
    npm run dev
    ```
    Next.js app will be available at `http://localhost:3000`
 
-### Environment Variables
-
-**Backend (.env)**
-```env
-HOST=0.0.0.0
-PORT=1337
-APP_KEYS=<generated-keys>
-API_TOKEN_SALT=<generated-salt>
-ADMIN_JWT_SECRET=<generated-secret>
-JWT_SECRET=<generated-secret>
-```
-
-**Frontend (.env.local)**
-```env
-NEXT_PUBLIC_STRAPI_API_URL=http://localhost:1337
-NEXT_PUBLIC_STRAPI_API_TOKEN=<your-api-token>
-```
 
 ## Core Concepts
 
