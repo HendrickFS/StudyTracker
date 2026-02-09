@@ -38,6 +38,11 @@ StudyTracker helps you stay motivated while learning by turning your educational
   - Achievement gallery
   - Streak tracking
 
+## Architecture
+
+Next.js provides the UI and calls Strapi's REST API. Strapi handles auth, content types, and business logic, and persists data in PostgreSQL. Docker Compose wires the frontend, backend, and database services for local development.
+
+
 ## Getting Started
 
 ### Prerequisites
@@ -52,22 +57,10 @@ StudyTracker helps you stay motivated while learning by turning your educational
    cd StudyTracker
    ```
 
-2. **Setup Backend (Strapi)**
-   ```bash
-   cd backend
-   npm install
-   npm run develop
+2. **Run Docker Compose**
    ```
-   Strapi will be available at `http://localhost:1337`
-
-3. **Setup Frontend (Next.js)**
-   ```bash
-   cd frontend
-   npm install
-   npm run dev
+   docker compose up --build -d
    ```
-   Next.js app will be available at `http://localhost:3000`
-
 
 ## Core Concepts
 
