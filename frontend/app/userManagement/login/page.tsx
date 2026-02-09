@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 export default function Login() {
   return (
     <div className="relative min-h-screen overflow-hidden bg-zinc-950 text-zinc-50">
@@ -35,7 +37,7 @@ export default function Login() {
           </div>
         </div>
 
-        <div className="mt-12 lg:mt-0 h-full w-full max-w-xl rounded-3xl border border-zinc-800/80 bg-zinc-900/70 p-8 shadow-[0_0_60px_rgba(0,0,0,0.45)] backdrop-blur lg:w-1/2">
+        <div className="mt-12 h-full w-full max-w-xl rounded-3xl border border-zinc-800/80 bg-zinc-900/70 p-8 shadow-[0_0_60px_rgba(0,0,0,0.45)] backdrop-blur lg:mt-0 lg:w-1/2">
           <div className="mb-8">
             <h2 className="text-2xl font-semibold">Sign in</h2>
             <p className="mt-2 text-sm text-zinc-400">
@@ -90,9 +92,12 @@ export default function Login() {
 
           <p className="mt-6 text-center text-xs text-zinc-400">
             New here?{" "}
-            <a href="#" className="text-emerald-300 hover:text-emerald-200">
+            <Link
+              href="/userManagement/register"
+              className="text-emerald-300 hover:text-emerald-200"
+            >
               Create an account
-            </a>
+            </Link>
           </p>
         </div>
       </div>

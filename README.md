@@ -41,8 +41,8 @@ StudyTracker helps you stay motivated while learning by turning your educational
 ## Getting Started
 
 ### Prerequisites
-- Node.js 18+ and npm/yarn
-- Database (SQLite for dev, PostgreSQL/MySQL for production)
+- Node.js 20+ and npm/yarn
+- Database (PostgreSQL)
 
 ### Installation
 
