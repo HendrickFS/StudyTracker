@@ -42,6 +42,8 @@ StudyTracker helps you stay motivated while learning by turning your educational
 
 Next.js provides the UI and calls Strapi's REST API. Strapi handles auth, content types, and business logic, and persists data in PostgreSQL. Docker Compose wires the frontend, backend, and database services for local development.
 
+<img width="644" height="379" alt="image" src="https://github.com/user-attachments/assets/36e9e63f-ee2c-4407-892d-336f20e98a8e" />
+
 
 ## Getting Started
 
